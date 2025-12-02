@@ -1,5 +1,5 @@
-#renamed range in work_data to range.
-#don't use reserved names for python. While it will work if you don't called the function python has, if you do you'll have to change all occurences.
+#renamed range in work_data to data.
+#don't use reserved names for python. While it will work if you don't call the function python has, if you do you'll have to change all occurences.
 #part1
 #Get the line --> Process range (Seperate them and get the start-end ints from them.) 
 # --> Put em in an array. --> Go through each range with iteration.
