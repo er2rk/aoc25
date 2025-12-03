@@ -42,9 +42,54 @@ def voltageHelper(bank):
         return result
 
 #part1
+"""
 total_voltage = 0
 for bank in banks:
     voltage = voltageHelper(bank)
+    total_voltage += voltage
+
+print(total_voltage)
+"""
+#part 2
+#VIP VERY GOOD PROBLEM! A GENERAL SOLUTION IS MADE FOR THIS.
+#using the same banks array.
+#will also go through the same logic iterating through them. except we'll use a second helper function.
+
+#This is a much harder problem which needs a general solution.
+#At first i thought about a recursive solution but because we need to keep the order it was going to get very complex very fast.
+#So instead of taking something and attaching it to another let's use two pointer logic one from left one from right.
+#If the one on the right is smaller than the one on the left we remove it.  
+def voltageHelper2(bank):
+        #Going with this logic we'll only remove as many as we need. 
+        remove = len(bank) - 12
+        #We'll keep the values in stack. 
+        stack = []
+
+        #Iterating through each character.
+        for d in bank:
+            #If we have to remove more, stack has element and the last one is smaller than what we currently have.
+            #Then we remove the last one and put what we currently have in.
+            #Would have to implement the stack from scratch if this was Java but we can use python's list which kind of acts like a stack.
+            while remove > 0 and stack and stack[-1] < d:
+                stack.pop()
+                remove -= 1
+            stack.append(d)
+
+        # In case we didn't remove enough we get the first 12 characters.
+        result_digits = stack[:12]
+        return int("".join(result_digits))
+
+
+
+
+
+
+
+
+
+total_voltage = 0
+for bank in banks:
+    voltage = voltageHelper2(bank)
     total_voltage += voltage
 
 print(total_voltage)
