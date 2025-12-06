@@ -54,8 +54,36 @@ for index in range(line_length):
             string_size += 1
         new_list.append(c)
     new_list.append(nums[-1][index])
-
     print(new_list)
+    #List created in the form: ['57  ', '173 ', '511 ', '474 ', '+']
+    cephalopod_nums = []
+    operation = new_list[-1]
+    for i in range(1,5):
+        cephalopod_num = ""
+        for c in new_list[:4]:
+            cephalopod_char = c[-i]
+            if cephalopod_char != " ":
+                cephalopod_num = cephalopod_num + cephalopod_char
+        try:
+            cephalopod_nums.append(int(cephalopod_num))
+        except:
+            print("Empty string")
+    """
+    ['5386', '1253', '3918', '916 ', '+'] new_list
+    [638, 8516, 3291, 5139] cephalopod_nums
+    """
+    if operation == "+":
+        result = 0
+        for num in cephalopod_nums:
+            result += num
+        total += result
+    else:
+        result = 1
+        for num in cephalopod_nums:
+            result *= num
+        total += result
+
+print(total)
 
 
     
